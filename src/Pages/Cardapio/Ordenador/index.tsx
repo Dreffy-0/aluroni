@@ -11,8 +11,7 @@ interface OrdenadorProps {
 
 function Ordenador({ ordenador, setOrdenador }: OrdenadorProps) {
 	const [toggle, setToggle] = useState(false);
-	const nomeOrdenador =
-		ordenador && opcoes.find(opcao => opcao.value === ordenador)?.nome;
+	const nomeOrdenador = ordenador && opcoes.find(opcao => opcao.value === ordenador)?.nome;
 
 	return (
 		<button
@@ -24,11 +23,7 @@ function Ordenador({ ordenador, setOrdenador }: OrdenadorProps) {
 			onBlur={() => setToggle(false)}
 		>
 			<span>{nomeOrdenador || "Ordenar Por:"}</span>
-			{toggle ? (
-				<MdKeyboardArrowUp size={20} />
-			) : (
-				<MdKeyboardArrowDown size={20} />
-			)}
+			{toggle ? <MdKeyboardArrowUp size={20} /> : <MdKeyboardArrowDown size={20} />}
 			<div
 				className={classNames({
 					[styles.ordenador__options]: true,

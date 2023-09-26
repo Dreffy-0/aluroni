@@ -1,6 +1,7 @@
+import { Cardapio } from "types/Prato";
 import Item from "./Item";
 import styles from "./Itens.module.scss";
-import cardapio from "./itens.json";
+import cardapio from "data/cardapio.json";
 import { useEffect, useState } from "react";
 
 interface ItensProps {
@@ -24,12 +25,14 @@ function Itens(props: ItensProps) {
 			return true;
 		}
 
-		function ordenar(novaLista: typeof cardapio) {
+		function ordenar(novaLista: Cardapio) {
 			const ordenarPropriedadeCrescente = (
-				lista: typeof cardapio,
+				lista: Cardapio,
 				propriedade: "size" | "serving" | "price",
 			) => {
-				return lista.sort((a, b) => (a[propriedade] > b[propriedade] ? 1 : -1));
+				return lista.sort((a, b) =>
+					a[propriedade] > b[propriedade] ? 1 : -1,
+				);
 			};
 			switch (ordenador) {
 				case "porcao":
